@@ -15,7 +15,6 @@ export default function Tabs() {
         headerShown: false,
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
-          console.log('here');
 
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';

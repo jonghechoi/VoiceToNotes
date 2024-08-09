@@ -1,15 +1,16 @@
 import {
   Text,
-  TextInput,
   View,
   StyleSheet,
   TouchableOpacity,
+  TextInput,
 } from 'react-native';
-import {useState} from 'react';
+import {Component, useState} from 'react';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
@@ -50,9 +51,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function LoginScreen() {
+const LoginScreen = ({navigation}) => {
   const [id, onChangeId] = useState('ID');
   const [pw, onChangePw] = useState('Password');
+
+  const onPressJoinEmail = () => {
+    navigation.navigate('Join');
+  };
 
   return (
     <View style={styles.container}>
@@ -70,7 +75,9 @@ export default function LoginScreen() {
         <Text style={{color: 'white'}}>로그인</Text>
       </TouchableOpacity>
       <View style={styles.row}>
-        <Text style={styles.cell}>이메일 가입</Text>
+        <Text style={styles.cell} onPress={onPressJoinEmail}>
+          이메일 가입
+        </Text>
         <Text style={styles.cell}>|</Text>
         <Text style={styles.cell}>이메일 찾기</Text>
         <Text style={styles.cell}>|</Text>
@@ -84,4 +91,6 @@ export default function LoginScreen() {
       </TouchableOpacity>
     </View>
   );
-}
+};
+
+export default LoginScreen;
